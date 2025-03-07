@@ -1,0 +1,29 @@
+.wrapper {
+  width: 100%;
+  padding: 12px 0;
+}
+
+.headingWrapper {
+  width: 80%;
+}
+.statsWrapper {
+}
+
+.heading {
+  font-size: 16px !important;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.subHeading {
+  font-size: 42px;
+  font-weight: 500;
+  color: orangered !important;
+}
+
+.description {
+  font-size: 15px !important;
+}

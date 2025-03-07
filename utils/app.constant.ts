@@ -1,0 +1,25 @@
+import { Category } from "@prisma/client";
+
+export const textByStoreCategory = {
+  [Category.SUSHI]: "스시·해산물",
+  [Category.UNAGI]: "장어",
+  [Category.TEMPURA]: "덴푸라",
+  [Category.TONKATSU]: "돈카츠·쿠시카츠",
+  [Category.YAKITORI]: "야키토리·꼬치",
+  [Category.SUKIYAKI]: "스키야키·샤브샤브",
+  [Category.SOBA]: "소바·우동",
+  [Category.RAMEN]: "라멘·츠케멘",
+  [Category.YAKISOBA]: "야키소바",
+  [Category.OKONOMIYAKI]: "오코노미야키·타코야키",
+  [Category.DONBURI]: "덮밥",
+  [Category.ODEN]: "오뎅",
+  [Category.KAISEKI]: "가이세키·일식",
+  [Category.HAMBAGU]: "함바그·오므라이스",
+  [Category.TEPPANYAKI]: "스테이크·철판요리",
+  [Category.CURRY]: "카레",
+  [Category.YAKINIKU]: "야키니쿠·호르몬",
+  [Category.NABE]: "나베",
+  [Category.CAFE]: "카페·디저트",
+  [Category.IZAKAYA]: "이자카야·바",
+  [Category.OTHER]: "기타 일본 음식",
+};

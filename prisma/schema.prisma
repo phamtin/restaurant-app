@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  SUSHI
+  UNAGI
+  TEMPURA
+  TONKATSU
+  YAKITORI
+  SUKIYAKI
+  SOBA
+  RAMEN
+  YAKISOBA
+  OKONOMIYAKI
+  DONBURI
+  ODEN
+  KAISEKI
+  HAMBAGU
+  TEPPANYAKI
+  CURRY
+  YAKINIKU
+  NABE
+  CAFE
+  IZAKAYA
+  OTHER
+}
+
+model Token {
+  id        Int      @id @default(autoincrement())
+  token     String   
+  account_id Int     
+  created_at DateTime @default(now())
+  
+  @@map("tokens")
+}
+
+model Restaurant {
+  id           String   @id @default(uuid()) 
+  name         String
+  rating       Float
+  rating_count Int      @map("rating_count")
+  category     Category
+  city         String
+  desc         String   
+  images       String[]
+  price_range  String   
+  
+  // featured: { text: String, icon: String }
+  featured    Json?
+
+  isFavorite  Boolean
+  favorited_by AccountFavRestaurant[]
+
+  @@map("restaurants")
+}
+
+model Account {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String
+  favorites   AccountFavRestaurant[]
+  created_at DateTime @default(now())
+
+  @@map("accounts")
+}
+
+model AccountFavRestaurant {
+  id      Int      @id @default(autoincrement())
+  account_id   Int
+  restaurant_id String
+  account     Account    @relation(fields: [account_id], references: [id])
+  restaurant  Restaurant @relation(fields: [restaurant_id], references: [id])
+  
+  @@map("account_fav_restaurants")
+}
+
